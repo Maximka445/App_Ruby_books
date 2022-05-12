@@ -1,0 +1,17 @@
+h2 Новая книга
+.ui.internally.centered.grid
+  .three.wide.column
+    .ui.center.aligned.container
+      = form_with model: [ @authors, @authors.books.build ], class: "ui form"  do |form|
+
+        .field
+
+            h3.ui.header
+              = form.label "Название книги" , class: "sub header"
+
+
+              = form.text_field :name_book
+
+
+        .field
+          = form.submit("Создать", class: "ui tiny secondary button")

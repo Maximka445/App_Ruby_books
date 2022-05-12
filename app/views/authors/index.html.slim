@@ -1,0 +1,17 @@
+h2 Все авторы
+p
+    = link_to "Добавить автора", new_author_path
+    - if @authors.count == 0
+        .ui.center.header Нет не одного автора, вы можете добавить автора нажам на "Добавить атора"
+    - else
+    .ui.internally.centered.grid
+      .five.wide.column
+        .ui.center.aligned.container
+          .ui.large.middle.aligned.divided.list
+            - @authors.each do |author|
+              .item
+                .ui.two.column.relaxed.grid
+                  .column
+                    = link_to "Автор #{author.name_author}","/authors/#{author.id}", :class => "bottom aligned content"
+                  .column
+                    a.right.floated.content = button_to "Удалить", author_path(author), :class => "ui tiny secondary button", method: :delete

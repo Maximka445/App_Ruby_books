@@ -1,0 +1,22 @@
+h2 Автор: #{ @authors.name_author }
+p
+  = link_to "Все авторы","/authors"
+  .ui.internally.centered.grid
+    .four.wide.column
+      .ui.two.item.menu
+        = link_to "Редактировать автора", edit_author_path(@authors),class: "item"
+        = link_to "Добавить книгу", new_author_book_path(params[:id]),class: "item"
+h2 Список книг Автора: #{ @authors.name_author}
+- if @authors.books.count == 0
+  h3.ui.center.header У автора нет книг, нажмите на "Добавить книгу"
+- else
+  .ui.grid
+
+    - @authors.books.each do |book|
+      .four.wide.column
+        h3 Книга: #{book.name_book}
+        .image
+          img src="sdvsdv.png"
+        .ui.secondary.menu
+          a.item = link_to "Редактировать книгу #{book.name_book}", "/books/#{book.id}/edit"
+          a.item = button_to "Удалить", [book.author, book], :class => "ui tiny secondary button", method: :delete

@@ -1,0 +1,16 @@
+h2 Изменение
+.ui.internally.centered.grid
+    .three.wide.column
+      .ui.center.aligned.container
+        = form_with model: @books, class: "ui form"  do |form|
+
+          .field
+
+            h3.ui.header
+              = form.label "Название книги", class: "sub header"
+
+
+              = form.text_field :name_book
+
+          .field
+            = form.submit("Изменить", class: "ui tiny secondary button")

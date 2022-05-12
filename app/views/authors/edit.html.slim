@@ -1,0 +1,17 @@
+h2 Изменение
+.ui.internally.centered.grid
+  .three.wide.column
+    .ui.center.aligned.container
+      = form_with model: @authors, class: "ui form"  do |form|
+
+          .field
+
+            h3.ui.header
+              = form.label "Имя автора" , class: "sub header"
+
+
+              = form.text_field :name_author
+
+
+          .field
+            = form.submit("Обновить", class: "ui tiny secondary button")
