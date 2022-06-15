@@ -6,15 +6,15 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+        <%= csrf_meta_tags %>
 
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+        <%= stylesheet_link_tag    'application', media: 'all' %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+        <%= javascript_pack_tag 'application' %>
+        <%= stylesheet_pack_tag 'application' %>
 
-  <body>
+
+
     <div class="ui center aligned container">
       <div class="ui text menu">
         <div class="header item">
@@ -28,6 +28,14 @@
           <%= link_to "Authors", authors_path,:class => "item"%>
       </div>
     </div>
+  </head>
+
+  <body>
+
+
+
+
+
 <div class="ui center aligned container">
     <main>
       <%= yield %>

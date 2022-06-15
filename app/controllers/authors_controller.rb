@@ -2,6 +2,7 @@ class AuthorsController < ApplicationController
 
   def index
     @authors = Author.all
+    render :json => @authors.to_json
   end
 
   def show
@@ -10,11 +11,14 @@ class AuthorsController < ApplicationController
 
   def create
     @authors = Author.new(author_params)
+
     if @authors.save
-      redirect_to @authors
-    else
-      render :new, status: :unprocessable_entity
+      #redirect_to @authors
+      render :json => @authors.to_json
+     #else
+     #  render :new, status: :unprocessable_entity
     end
+
   end
 
   def update
@@ -28,21 +32,28 @@ class AuthorsController < ApplicationController
   end
 
   def destroy
-    @authors = Author.find(params[:id]).destroy
-    redirect_to authors_path
+    puts "dfg"
+    @authors = Author.find(params[:id])
+    @authors.destroy
+    f = @authors.errors.empty?
+
+    render :json => f.to_json
+    #redirect_to authors_path
   end
 
   def edit
     @authors = Author.find(params[:id])
+    render :json => @authors.to_json
   end
 
   def new
     @authors = Author.new
+    render :json => @authors.to_json
   end
 
   private
     def author_params
-      params.require(:author).permit(:name_author)
+      params.fetch(:author, {}).permit(:name_author)
     end
 
 end

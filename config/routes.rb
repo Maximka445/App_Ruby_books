@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "pages#index"
+  root 'pages#index'
   resources :authors
   resources :books
 

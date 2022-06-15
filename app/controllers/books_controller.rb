@@ -1,5 +1,10 @@
 class BooksController < ApplicationController
 
+  def index
+    @books = Book.all
+    render :json => @books.to_json
+  end
+
   def create
     @authors = Author.find(params[:author_id])
     @books = @authors.books.create(book_params)
